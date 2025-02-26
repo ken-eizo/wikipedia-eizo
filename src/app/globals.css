@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist&display=swap');
+
+
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-size: 100%;
+  font-family: "Geist","Noto Sans JP", sans-serif;
+  font-weight: 400;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.black-button {
+  padding: 10px 20px;
+  font-weight: 400;
+  font-size: 16px;
+  border: none;
+  background-color: #ffffff0f;
+  color: white;
+  border-radius: 200px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.white-button {
+  font-family: "Geist","Noto Sans JP", sans-serif;
+  font-weight: 400;
+  display: flex;  
+  padding: 5px 10px;
+  font-weight: 400;
+  font-size: 12px;
+  border: none;
+  background-color: white;
+  color: rgb(0, 0, 0);
+  border-radius: 200px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}

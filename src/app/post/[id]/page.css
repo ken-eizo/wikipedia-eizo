@@ -1,0 +1,13 @@
+.PostDetail {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+    padding-top:  55px;
+    
+}
+.Detail {
+    color: rgb(221, 221, 221);
+}
+.Created-at{
+    color:rgb(194, 194, 194)
+}

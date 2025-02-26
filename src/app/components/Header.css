@@ -1,0 +1,80 @@
+/* D:\Developer\wikipedia\src\app\components\Header.css */
+/* Mobile View */
+@media (max-width: 600px) {
+
+  .navigation{
+    display: none;
+  }
+}
+
+.header{
+  position: fixed; /* これを追加 */
+  top: 0;         /* これを追加 */
+  left: 0;        /* これを追加 */
+  width: 100%;    /* これを追加 */
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: rgb(43, 43, 43) 1px solid;
+  background-color: rgb(22, 22, 22); /* これを追加（背景色が透明だと下のコンテンツが透けて見えるため） */
+  z-index: 1000; /* これを追加（他の要素より前面に表示するため） */
+}
+
+.links{
+  display: flex;
+  gap: 40px;
+  
+}
+
+.user{
+  display: flex;  
+  align-items: center;
+  margin-right: 10px;
+  width: auto;
+  height: auto;
+}
+
+.userinfo {
+  position: relative; /* ドロップダウンの基準点 */
+  display: inline-block;
+}
+
+.userimg {
+  display: flex;  
+  width: 30px; /* 例: 画像サイズ */
+  height: 30px;
+  border-radius: 50%; /* 丸くする */
+  cursor: pointer;
+}
+
+/* ドロップダウンメニューのスタイル */
+.dropdown-content {
+  position: absolute;
+  right: 0;
+  top: 110%;
+  background-color: #313131;
+  min-width: 150px;
+  z-index: 1;
+  border-radius: 5px; /* 角丸を設定 */
+  overflow: hidden; /* これを追加 */
+}
+
+.dropdown-button {
+    font-family: "Geist","Noto Sans JP", sans-serif;
+    font-weight: 400;
+    color: rgb(206, 206, 206);
+    padding: 5px 10px;
+    font-size: 15px;
+    text-decoration: none;
+    display: block;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+}
+.dropdown-button:hover {
+  background-color: #474747;
+  overflow: hidden; /* これを追加 */
+}
