@@ -1,9 +1,13 @@
 .Home {
+    padding-top:  35px;
     font-size: 70%;
     padding: -px;
     padding-left: 0px;
     margin: 20px;
     border-radius: 0px;
-    color: #999999;
+    color: #ffffff;
     letter-spacing: 0px;
+}
+h1{
+    font-weight: 400;
 }

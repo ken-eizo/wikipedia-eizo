@@ -7,7 +7,6 @@ export default function PostPage() {
         <div className='Home'>
             <h1>Post Pageです</h1>
             <NewPost />
-            <AllPosts />
         </div>
     )
 }

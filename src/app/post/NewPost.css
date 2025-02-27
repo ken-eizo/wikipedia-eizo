@@ -1,0 +1,67 @@
+.PostEdit {
+    flex-direction: column;
+    justify-content: center; /* 水平方向に中央揃え */
+    align-items: center; /* 垂直方向に中央揃え */
+    width: 40%; /* 横幅を50%に設定 */
+    margin: 0 auto; /* 横方向の中央揃え */
+    padding: 0px;
+}
+.NewPostTitle{
+    font-size: 200%;
+}
+.edit > * {
+    margin-bottom: 10px; /* 子要素間の縦の間隔を20pxに設定 */
+}
+.edit{
+    background-color: #181818;
+    padding: 20px; /* 内側の余白を20pxに設定 */
+    border-radius: 25px; /* 角丸にする */
+    border: #222222 1px solid; /* 枠線を設定 */
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.imput{
+    background-color: #131313;
+    display: flex;
+    width: 100%; /*親要素いっぱい広げる*/
+	padding: 10px 10px; /*ボックスを大きくする*/
+	font-size: 16px;
+	border-radius: 5px; /*ボックス角の丸み*/
+	border: 2px solid #4b4b4b; /*枠線*/
+	box-sizing: border-box; /*横幅の解釈をpadding, borderまでとする*/
+    color: #e4e4e4; /* テキストカラーを白に変更 */
+}
+.Title{
+    color: #b4b4b4;
+}
+.Content{
+    color: #b4b4b4;
+}
+
+.imput:focus {
+    border: 2px solid #5087b4; 
+    z-index: 10;
+    outline: 0;
+    
+}
+.imput-content{
+    height: 350px;
+    resize: none; /* サイズ変更を無効にする */
+}
+.submit-button {
+    font-family: "Geist","Noto Sans JP", sans-serif;
+    font-weight: 400;
+    display: flex;
+    padding: 5px 55px;
+    font-weight: 400;
+    font-size: 12px;
+    border: none;
+    background-color: white;
+    color: rgb(0, 0, 0);
+    border-radius: 200px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: flex-end; /* 右寄せ */
+  }
