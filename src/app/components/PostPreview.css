@@ -1,0 +1,100 @@
+.post-preview {
+    width: 100%;
+    background: #202020;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.preview-content {
+    color: #e4e4e4;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* 見出しスタイル */
+.preview-content h1 {
+    font-size: 2em;
+    color: #fff;
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.3em;
+    margin: 1.5em 0 1em;
+}
+
+.preview-content h2 {
+    font-size: 1.5em;
+    color: #fff;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.3em;
+    margin: 1.3em 0 0.8em;
+}
+
+.preview-content h3 {
+    font-size: 1.3em;
+    color: #fff;
+    margin: 1.2em 0 0.6em;
+}
+
+/* リンクスタイル */
+.preview-content a {
+    color: #5087b4;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.preview-content a:hover {
+    text-decoration: underline;
+    color: #64b5f6;
+}
+
+/* 画像スタイル */
+.preview-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1em auto;
+    border-radius: 4px;
+    border: 1px solid #333;
+}
+
+/* テーブルスタイル */
+.preview-content table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+    font-size: 0.9em;
+}
+
+.preview-content th {
+    background: #272727;
+    border: 1px solid #333;
+    padding: 12px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.preview-content td {
+    border: 1px solid #333;
+    padding: 12px;
+    background: #202020;
+}
+
+/* 引用スタイル */
+.preview-content blockquote {
+    border-left: 4px solid #5087b4;
+    margin: 1.5em 0;
+    padding-left: 1em;
+    color: #999;
+}
+
+/* リストスタイル */
+.preview-content ul,
+.preview-content ol {
+    padding-left: 1.5em;
+    margin: 1em 0;
+}
+
+.preview-content li {
+    margin: 0.5em 0;
+}

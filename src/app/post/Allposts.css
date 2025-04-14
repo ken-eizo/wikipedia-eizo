@@ -1,0 +1,131 @@
+.post_card {
+    background-color: #121212;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 5px;
+    border: 2px solid #191919;
+    height: 140px; /* 高さを少し増やす */
+    display: flex;
+    flex-direction: column;
+}
+
+.post_card:hover {
+    background-color: #222222;
+    border-color: #393939;
+}
+
+.post_card_content {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+    justify-content: space-between; /* 要素を均等に配置 */
+}
+
+.title {
+    margin: 0 0 8px 0;
+    color: #cfcfcf;
+    font-size: 1.7em;
+    font-weight: bold;
+    /* タイトルが長い場合は省略 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-height: 1.3;
+}
+
+.PostGroup {
+    font-size: 100%;
+    line-height: 1.5;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+.postspage {
+    max-width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+}
+.created_at {
+    color: #999999;
+    font-size: 12px;
+}
+.content{
+    color: #999999;
+    font-size: 10px;
+}
+.PostList{
+    font-size: 15px;
+}
+
+.post_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    /* ヘッダー部分を固定サイズに */
+    height: 32px;
+}
+
+.author_info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.author_avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author_avatar_placeholder {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 12px;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+}
+
+.author_name {
+    color: #b4b4b4;
+    font-size: 12px;
+}
+
+.post_tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+    margin: 4px 0;
+}
+
+.preview_tag {
+    font-size: 10px;
+    padding: 2px 8px;
+    background: #202020;
+    border: 1px solid #333;
+    border-radius: 12px;
+    color: #999;
+}
+
+/* フッター部分のスタイル */
+.post_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* 下部に配置 */
+    padding-top: 19px;
+    border-top: 1px solid #2a2a2a; /* 区切り線を追加 */
+}

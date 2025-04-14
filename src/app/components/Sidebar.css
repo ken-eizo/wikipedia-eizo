@@ -1,0 +1,37 @@
+/* ...existing code... */
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    font-size: 15px;
+    width: 150px;
+    padding: 15px;
+    position: fixed;
+    /* ヘッダーの高さ分だけ下げる */
+    top:40px;
+    /* h1のmarginとheightの合計値 */
+    height: 100%;
+    /* 画面の高さからヘッダーの高さを引く */
+    left: 0;
+    border-color: #1e1e1e;
+    border-width: 0px;
+    border-right-width: 1px;
+    border-style: solid;
+}
+
+.sidebar-content {
+    color: #fff;
+}
+
+.sidebar-section {
+    display: flex;
+    flex-direction: column;
+    line-height: 35px;
+}
+
+.filter-group {
+    margin-bottom: 20px;
+}

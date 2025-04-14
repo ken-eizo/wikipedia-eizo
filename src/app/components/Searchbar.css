@@ -1,0 +1,171 @@
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+.searchbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 600px;
+    position: relative;
+}
+
+.searchbar input {
+    width: 100%;
+    padding: 12px 45px 12px 15px;
+    border: 2px solid #333;
+    border-radius: 25px;
+    background-color: #1a1a1a;
+    color: #fff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    font-family: "Geist","Noto Sans JP", sans-serif;
+}
+
+.searchbar input:focus {
+    outline: none;
+    border-color: #666;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.searchbar input::placeholder {
+    color: #666;
+}
+
+.searchbar .material-icons {
+    position: absolute;
+    right: 15px;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    background: transparent;  /* 追加: 背景を透明に */
+    border: none;            /* 追加: ボーダーを削除 */
+    padding: 0;             /* 追加: パディングをリセット */
+}
+
+.searchbar .material-icons:hover {
+    color: #fff;
+    background: transparent;  /* 追加: ホバー時も背景を透明に */
+}
+
+.searchbar-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    margin-top: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.search-result-item {
+    padding: 12px 16px;
+    border-bottom: 1px solid #333;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    font-family: "Geist","Noto Sans JP", sans-serif;
+}
+
+.search-result-item:hover {
+    background-color: #333;
+}
+
+/* アクティブタグのスタイル */
+.active-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.active-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: #202020;
+  border: 1px solid #5087b4;
+  border-radius: 16px;
+  color: #5087b4;
+  font-size: 12px;
+}
+
+.remove-tag {
+  background: none;
+  border: none;
+  color: #5087b4;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.remove-tag:hover {
+  color: #ff4444;
+}
+
+.remove-tag .material-icons {
+  font-size: 16px;
+  position: static;
+}
+
+/* タグサジェストのスタイル */
+.tag-suggestions {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1001;
+}
+
+.suggested-tag {
+  padding: 8px 16px;
+  color: #e4e4e4;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.suggested-tag:hover {
+  background: #272727;
+  color: #5087b4;
+}
+
+/* 検索結果内のタグスタイル */
+.result-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.result-tag {
+  font-size: 12px;
+  color: #5087b4;
+}
+
+.result-title {
+  font-weight: 500;
+}

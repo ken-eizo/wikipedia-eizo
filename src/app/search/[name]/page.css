@@ -1,0 +1,131 @@
+.search-page {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.search-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.search-button:hover {
+    background-color: #0056b3;
+}
+.search-results {
+    margin-top: 20px;
+}
+.search-results-page {
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+}
+.loading {
+    color: #999;
+    text-align: center;
+    padding: 20px;
+}
+.results-Group {
+    font-size: 100%;
+    line-height: 1.5;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+.postspage {
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+}
+.created_at {
+    color: #999999;
+    font-size: 50%;
+}
+.result-card-content{
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+    justify-content: space-between; /* 要素を均等に配置 */
+}
+
+.result-list {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 15px;
+}
+
+.result-card {
+    background-color: #141414;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 5px;
+    border: 2px solid #1e1e1e;
+    height: 130px; /* 高さを少し増やす */
+    display: flex;
+    flex-direction: column;
+}
+
+.result-card:hover {
+    background-color: #222222;
+    border-color: #393939;
+}
+
+.title {
+    margin: 0 0 10px 0;
+    color: #cfcfcf;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+
+.no-results {
+    color: #999;
+    text-align: center;
+    padding: 20px;
+}
+
+.search-header {
+    display: flex;
+    color: #e4e4e4;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.search-query {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-tags {
+    display: flex;
+    gap: 8px;
+}
+
+.search-tag {
+    color: #5087b4;
+    background: #1a1a1a;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 14px;
+}

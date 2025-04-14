@@ -13,11 +13,13 @@ export default function Header() {
 
     return (
         <nav className="header">
+            <div className='HeaderGroup'>
             <div className='links'>
                     <Link href="/">Wikipedia</Link>
                     <Link href="/post">Post</Link>
                     <Link href="/search">Search</Link>
                     <Link href="/Forum">Forum</Link>
+                    <Link href="/news">News</Link>
             </div>
             <div className="auth-buttons">
                 { user ? (
@@ -29,6 +31,7 @@ export default function Header() {
                     <SignInButton />
                     </div>
                 )}
+            </div>
             </div>
         </nav> 
     );
