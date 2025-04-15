@@ -2,15 +2,13 @@
 
 import './Header.css'
 import Link from 'next/link';
-import {useAuthState} from 'react-firebase-hooks/auth';
+import dynamic from 'next/dynamic';
 import { signInWithPopup } from "firebase/auth";
 import React, { useState, useEffect, useRef } from 'react';
 import { auth, provider } from "../firebase";
 
 
 export default function Header() {
-    const [user] = useAuthState(auth);
-
     return (
         <nav className="header">
             <div className='HeaderGroup'>
@@ -22,20 +20,32 @@ export default function Header() {
                     <Link href="/news">News</Link>
             </div>
             <div className="auth-buttons">
-                { user ? (
-                    <div className="user">
-                        <UserInfo />
-                    </div>
-                ) : (
-                    <div className='user'>
-                    <SignInButton />
-                    </div>
-                )}
+                <AuthInfo />
             </div>
             </div>
         </nav> 
     );
 }
+
+const AuthInfo = dynamic(
+    // 非同期関数を使う
+    async () => {
+        // React Firebase Hooks をここでインポート
+        const { useAuthState } = await import('react-firebase-hooks/auth');
+        return function AuthInfo() {
+            const [user] = useAuthState(auth);
+            return user ? (
+                    <div className="user">
+                        <UserInfo />
+                    </div>
+                ) : (
+                    <div className='user'>
+                        <SignInButton />
+                    </div>
+                );
+        }
+    }, { ssr: false }
+);
 
 //サインイン
 function SignInButton() {
