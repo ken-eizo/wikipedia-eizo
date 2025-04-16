@@ -3,7 +3,6 @@
 import { useEffect, useState, use } from 'react';
 import { useRouter } from 'next/navigation';
 import { doc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
-
 import { demoCollection } from '../../firebase';
 import './page.css';
 import Link from 'next/link';
@@ -44,7 +43,7 @@ export default function PostDetail({ params }) {
 
           // タグに基づいて関連記事を自動的に取得
           if (data.tags && data.tags.length > 0) {
-            const postsRef = collection(demoCollection);
+            const postsRef = demoCollection;
             const q = query(
               demoCollection,  // collection(db, "demo")の代わりにdemoCollectionを使用
               where("tags", "array-contains-any", data.tags)

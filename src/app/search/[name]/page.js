@@ -26,13 +26,13 @@ export default function SearchResults() {
                 if (tags.length > 0) {
                     // タグでフィルタリング
                     q = query(
-                        collection(demoCollection),
+                        demoCollection,
                         where("tags", "array-contains-any", tags)
                     );
                 } else {
                     // 通常の検索
                     q = query(
-                        collection(demoCollection),
+                        demoCollection,
                         where("title", ">=", searchText),
                         where("title", "<=", searchText + '\uf8ff')
                     );

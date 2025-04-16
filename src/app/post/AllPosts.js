@@ -16,15 +16,16 @@ const AllPosts = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        onSnapshot(collection(demoCollection), (snapshot) => {
+        const unsubscribe = onSnapshot(demoCollection, (snapshot) => {
             setPosts(
                 snapshot.docs.map((doc) => ({
-                    id: doc.id, // 🔹 FirebaseのドキュメントIDを追加
+                    id: doc.id,
                     ...doc.data(),
                 })).sort((a, b) => b.created_at - a.created_at)
             );
-            return () => unsubscribe();
         });
+
+        return () => unsubscribe();
     }, []);
 
     return (

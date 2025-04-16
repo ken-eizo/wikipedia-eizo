@@ -329,7 +329,7 @@ const NewPost = () => {
   // 既存のタグを取得
   useEffect(() => {
     const fetchExistingTags = async () => {
-      const postsRef = collection(demoCollection);
+      const postsRef = demoCollection;
       const querySnapshot = await getDocs(postsRef);
       const tags = new Set(); // 重複を避けるためにSetを使用
 
@@ -466,7 +466,7 @@ const NewPost = () => {
       const auth = getAuth();
       const user = auth.currentUser;
 
-      await addDoc(collection(demoCollection), {
+      await addDoc(demoCollection), {
         title: title,
         content: editor.getHTML(),
         created_at: new Date().getTime(),
