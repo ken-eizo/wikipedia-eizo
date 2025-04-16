@@ -40,15 +40,16 @@ export default function Searchbar() {
     }
 
     try {
-      const postsRef = query(demoCollection);
-      let q = postsRef;
+      // postsRefの定義を修正
+      const q = query(demoCollection);  // 直接demoCollectionを使用
 
       // タグでフィルタリング
+      let finalQuery = q;
       if (tagList.length > 0) {
-        q = query(postsRef, where('tags', 'array-contains-any', tagList));
+        finalQuery = query(demoCollection, where('tags', 'array-contains-any', tagList));
       }
 
-      const querySnapshot = await getDocs(q);
+      const querySnapshot = await getDocs(finalQuery);
       const results = querySnapshot.docs
         .map(doc => ({
           id: doc.id,
