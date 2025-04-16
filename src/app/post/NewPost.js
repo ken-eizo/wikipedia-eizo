@@ -466,7 +466,7 @@ const NewPost = () => {
       const auth = getAuth();
       const user = auth.currentUser;
 
-      await addDoc(demoCollection), {
+      await addDoc(demoCollection, {
         title: title,
         content: editor.getHTML(),
         created_at: new Date().getTime(),
