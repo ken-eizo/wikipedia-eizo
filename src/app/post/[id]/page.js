@@ -22,7 +22,7 @@ export default function PostDetail({ params }) {
   useEffect(() => {
     const fetchPostAndRelated = async () => {
       try {
-        const docRef = doc(db, "posts", id);
+        const docRef = doc(db, "demo", id);
         const docSnap = await getDoc(docRef);
         
         if (docSnap.exists()) {
@@ -43,7 +43,7 @@ export default function PostDetail({ params }) {
 
           // タグに基づいて関連記事を自動的に取得
           if (data.tags && data.tags.length > 0) {
-            const postsRef = collection(db, "posts");
+            const postsRef = collection(db, "demo");
             const q = query(
               postsRef,
               where("tags", "array-contains-any", data.tags)

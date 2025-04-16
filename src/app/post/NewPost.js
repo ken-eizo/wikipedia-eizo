@@ -29,7 +29,7 @@ const ArticleSearch = ({ isOpen, onClose, onSelect, style }) => {
     }
 
     try {
-      const postsRef = collection(db, "posts");
+      const postsRef = collection(db, "demo");
       const q = query(
         postsRef,
         where("title", ">=", value),
@@ -328,7 +328,7 @@ const NewPost = () => {
   // 既存のタグを取得
   useEffect(() => {
     const fetchExistingTags = async () => {
-      const postsRef = collection(db, "posts");
+      const postsRef = collection(db, "demo");
       const querySnapshot = await getDocs(postsRef);
       const tags = new Set(); // 重複を避けるためにSetを使用
 
@@ -465,7 +465,7 @@ const NewPost = () => {
       const auth = getAuth();
       const user = auth.currentUser;
 
-      await addDoc(collection(db, "posts"), {
+      await addDoc(collection(db, "demo"), {
         title: title,
         content: editor.getHTML(),
         created_at: new Date().getTime(),

@@ -10,7 +10,7 @@ const firebaseConfig = {
     apiKey: "AIzaSyA3H5GJGVKtzYKBRqPlnRpeZ6yIC4HNiRg",
     authDomain: "wikipediaeizo.firebaseapp.com",
     projectId: "wikipediaeizo",
-    storageBucket: "wikipediaeizo.appspot.com",
+    storageBucket: "wikipediaeizo.firebasestorage.app",
     messagingSenderId: "282678401680",
     appId: "1:282678401680:web:263ec3787153a7c3c01615",
     measurementId: "G-M03TBS744E"

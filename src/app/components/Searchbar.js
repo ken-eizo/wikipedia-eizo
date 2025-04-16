@@ -17,7 +17,7 @@ export default function Searchbar() {
   // 既存のタグを取得
   useEffect(() => {
     const fetchTags = async () => {
-      const postsRef = collection(db, "posts");
+      const postsRef = collection(db, "demo");
       const querySnapshot = await getDocs(postsRef);
       const uniqueTags = new Set();
 
@@ -39,7 +39,7 @@ export default function Searchbar() {
     }
 
     try {
-      const postsRef = collection(db, "posts");
+      const postsRef = collection(db, "demo");
       let q = postsRef;
 
       // タグでフィルタリング
