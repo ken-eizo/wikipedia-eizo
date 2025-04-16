@@ -461,27 +461,41 @@ const NewPost = () => {
   });
 
   const onPublish = async () => {
-    if (!editor?.getText() || !title) return;
     try {
+      if (!title) {
+        alert('タイトルを入力してください');
+        return;
+      }
+  
       const auth = getAuth();
       const user = auth.currentUser;
-
+  
+      // ゲストモードでの投稿を許可
+      const authorInfo = {
+        authorId: user?.uid || 'guest',
+        authorName: user?.displayName || 'ゲスト',
+        authorPhotoURL: user?.photoURL || '/images/default-avatar.png', // デフォルトアバター画像
+      };
+  
       await addDoc(demoCollection, {
         title: title,
         content: editor.getHTML(),
         created_at: new Date().getTime(),
-        authorId: user?.uid,
-        authorName: user?.displayName || 'ゲスト',
-        authorPhotoURL: user?.photoURL || null,
+        ...authorInfo,
         tags: tags
       });
-      
+  
       // 投稿後にフォームをリセット
       editor.commands.setContent('');
       setTitle('');
       setTags([]);
+      
+      // 成功メッセージ
+      alert('投稿が完了しました！');
+      
     } catch (error) {
       console.error("投稿エラー:", error);
+      alert('投稿に失敗しました。もう一度お試しください。');
     }
   };
 
