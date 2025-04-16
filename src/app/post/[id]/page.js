@@ -6,6 +6,7 @@ import { doc, getDoc, collection, query, where, getDocs } from 'firebase/firesto
 import db from '../../firebase';
 import './page.css';
 import Link from 'next/link';
+import { demoCollection } from '../../firebase';
 
 export default function PostDetail({ params }) {
   const router = useRouter();
@@ -22,7 +23,7 @@ export default function PostDetail({ params }) {
   useEffect(() => {
     const fetchPostAndRelated = async () => {
       try {
-        const docRef = doc(db, "demo", id);
+        const docRef = doc(demoCollection, id);
         const docSnap = await getDoc(docRef);
         
         if (docSnap.exists()) {
@@ -43,9 +44,9 @@ export default function PostDetail({ params }) {
 
           // タグに基づいて関連記事を自動的に取得
           if (data.tags && data.tags.length > 0) {
-            const postsRef = collection(db, "demo");
+            const postsRef = collection(demoCollection);
             const q = query(
-              postsRef,
+              demoCollection,  // collection(db, "demo")の代わりにdemoCollectionを使用
               where("tags", "array-contains-any", data.tags)
             );
             const querySnapshot = await getDocs(q);

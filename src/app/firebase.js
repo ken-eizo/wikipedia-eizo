@@ -1,7 +1,7 @@
 'use client';
 
 import { initializeApp } from "firebase/app";
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, collection } from 'firebase/firestore';
 import { GoogleAuthProvider } from "firebase/auth";
 import { getAuth } from 'firebase/auth';
 import { getStorage } from "firebase/storage";
@@ -17,10 +17,13 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
-const db = getFirestore(app);
 const storage = getStorage(app);
 
-export { auth, provider, storage };
+// コレクション参照を作成
+const demoCollection = collection(db, "demo");  // postsからdemoに変更
+
+export { auth, provider, storage, demoCollection };  // demoCollectionをエクスポート
 export default db;

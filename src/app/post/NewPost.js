@@ -16,6 +16,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import db, { storage } from "../firebase";
 import { getAuth } from 'firebase/auth';
 import './NewPost.css';
+import { demoCollection } from '../firebase';
 
 // 記事検索用のミニサーチバーコンポーネント
 const ArticleSearch = ({ isOpen, onClose, onSelect, style }) => {
@@ -29,7 +30,7 @@ const ArticleSearch = ({ isOpen, onClose, onSelect, style }) => {
     }
 
     try {
-      const postsRef = collection(db, "demo");
+      const postsRef = query(demoCollection);
       const q = query(
         postsRef,
         where("title", ">=", value),
@@ -328,7 +329,7 @@ const NewPost = () => {
   // 既存のタグを取得
   useEffect(() => {
     const fetchExistingTags = async () => {
-      const postsRef = collection(db, "demo");
+      const postsRef = collection(demoCollection);
       const querySnapshot = await getDocs(postsRef);
       const tags = new Set(); // 重複を避けるためにSetを使用
 
@@ -465,7 +466,7 @@ const NewPost = () => {
       const auth = getAuth();
       const user = auth.currentUser;
 
-      await addDoc(collection(db, "demo"), {
+      await addDoc(collection(demoCollection), {
         title: title,
         content: editor.getHTML(),
         created_at: new Date().getTime(),

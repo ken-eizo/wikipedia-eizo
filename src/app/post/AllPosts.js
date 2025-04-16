@@ -16,7 +16,7 @@ const AllPosts = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        onSnapshot(collection(db, 'posts'), (snapshot) => {
+        onSnapshot(collection(db, 'demo'), (snapshot) => {
             setPosts(
                 snapshot.docs.map((doc) => ({
                     id: doc.id, // 🔹 FirebaseのドキュメントIDを追加

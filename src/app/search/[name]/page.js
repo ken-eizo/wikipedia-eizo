@@ -7,6 +7,7 @@ import Link from 'next/link';
 import './page.css';
 import Searchbar from '@/app/components/Searchbar';
 import '../../post/Allposts.css'; // AllpostsのCSSを直接インポート
+import { demoCollection } from '../firebase';
 
 export default function SearchResults() {
     const [results, setResults] = useState([]);
@@ -26,13 +27,13 @@ export default function SearchResults() {
                 if (tags.length > 0) {
                     // タグでフィルタリング
                     q = query(
-                        collection(db, "demo"),
+                        collection(demoCollection),
                         where("tags", "array-contains-any", tags)
                     );
                 } else {
                     // 通常の検索
                     q = query(
-                        collection(db, "demo"),
+                        collection(demoCollection),
                         where("title", ">=", searchText),
                         where("title", "<=", searchText + '\uf8ff')
                     );

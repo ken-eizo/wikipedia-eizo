@@ -5,6 +5,7 @@ import { collection, query, where, getDocs } from 'firebase/firestore';
 import db from '../firebase';
 import './Searchbar.css';
 import Link from 'next/link';
+import { demoCollection } from '../firebase';
 
 export default function Searchbar() {
   const router = useRouter();
@@ -17,7 +18,7 @@ export default function Searchbar() {
   // 既存のタグを取得
   useEffect(() => {
     const fetchTags = async () => {
-      const postsRef = collection(db, "demo");
+      const postsRef = demoCollection;
       const querySnapshot = await getDocs(postsRef);
       const uniqueTags = new Set();
 
@@ -39,7 +40,7 @@ export default function Searchbar() {
     }
 
     try {
-      const postsRef = collection(db, "demo");
+      const postsRef = query(demoCollection);
       let q = postsRef;
 
       // タグでフィルタリング
