@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 import { signInWithPopup } from "firebase/auth";
 import React, { useState, useEffect, useRef } from 'react';
 import { auth, provider } from "../firebase";
-
+import { useRouter } from 'next/navigation';  // navigationからインポート
 
 export default function Header() {
     return (
@@ -63,6 +63,7 @@ function SignInButton() {
 function UserInfo() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef(null); // ドロップダウン要素への参照
+    const router = useRouter();  // next/navigationのuseRouter
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
@@ -100,7 +101,15 @@ function UserInfo() {
             />
             {isDropdownOpen && (
                 <div className="dropdown-content">
-                    <button className='dropdown-button'>プロフィール</button>
+                    <button 
+                        className='dropdown-button' 
+                        onClick={() => {
+                            router.push('/profile');
+                            setIsDropdownOpen(false);
+                        }}
+                    >
+                        プロフィール
+                    </button>
                     <button className='dropdown-button'>設定</button>
                     <button className='dropdown-button' onClick={handleSignOut}>サインアウト</button>
                 </div>
