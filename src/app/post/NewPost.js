@@ -316,15 +316,16 @@ const MenuBar = ({ editor }) => {
   );
 };
 
-const NewPost = () => {
+const NewPost = ({ initialData = null, isEditing = false, postId = null, onSave = null }) => {
   const [isUploading, setIsUploading] = useState(false);
-  const [title, setTitle] = useState('');
-  const [tags, setTags] = useState([]);
+  const [title, setTitle] = useState(initialData?.title || '');
+  const [tags, setTags] = useState(initialData?.tags || []);
   const [tagInput, setTagInput] = useState('');
   const [suggestedTags, setSuggestedTags] = useState([]);
   const [existingTags, setExistingTags] = useState([]); // 既存のタグリスト
   const [isArticleSearchOpen, setIsArticleSearchOpen] = useState(false);
   const [articleSearchPosition, setArticleSearchPosition] = useState({ top: 0, left: 0 });
+  const auth = getAuth();  // authの初期化を追加
 
   // 既存のタグを取得
   useEffect(() => {
@@ -457,7 +458,7 @@ const NewPost = () => {
         placeholder: '記事を書く...',
       }),
     ],
-    content: '',
+    content: initialData?.content || '',
   });
 
   const onPublish = async () => {
@@ -466,33 +467,30 @@ const NewPost = () => {
         alert('タイトルを入力してください');
         return;
       }
-  
-      const auth = getAuth();
-      const user = auth.currentUser;
-  
-      // ゲストモードでの投稿を許可
-      const authorInfo = {
-        authorId: user?.uid || 'guest',
-        authorName: user?.displayName || 'ゲスト',
-        authorPhotoURL: user?.photoURL || '/images/default-avatar.png', // デフォルトアバター画像
-      };
-  
-      await addDoc(demoCollection, {
-        title: title,
+
+      const postData = {
+        title,
         content: editor.getHTML(),
-        created_at: new Date().getTime(),
-        ...authorInfo,
-        tags: tags
-      });
-  
-      // 投稿後にフォームをリセット
-      editor.commands.setContent('');
-      setTitle('');
-      setTags([]);
-      
-      // 成功メッセージ
-      alert('投稿が完了しました！');
-      
+        tags,
+        // 新規投稿の場合のみ以下のフィールドを追加
+        ...(!!isEditing ? {} : {
+          created_at: new Date().getTime(),
+          authorId: auth.currentUser?.uid || 'guest',
+          authorName: auth.currentUser?.displayName || 'ゲスト',
+          authorPhotoURL: auth.currentUser?.photoURL || '/images/default-avatar.png',
+        }),
+      };
+
+      if (isEditing && onSave) {
+        await onSave(postData);
+      } else {
+        await addDoc(demoCollection, postData);
+        alert('投稿が完了しました！');
+        // フォームのリセット
+        editor.commands.setContent('');
+        setTitle('');
+        setTags([]);
+      }
     } catch (error) {
       console.error("投稿エラー:", error);
       alert('投稿に失敗しました。もう一度お試しください。');
@@ -639,8 +637,10 @@ const NewPost = () => {
         onClick={onPublish} 
         disabled={isUploading}
       >
-        <span className="material-icons">publish</span>
-        公開する
+        <span className="material-icons">
+          {isEditing ? 'save' : 'publish'}
+        </span>
+        {isEditing ? '保存する' : '公開する'}
       </button>
     </div>
   );

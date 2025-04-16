@@ -10,7 +10,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <div className="sidebar-content">
         <div className="sidebar-section">
-          <Link href="/filter">フィルター</Link>
+          <Link href="/readme">readme</Link>
           <Link href="/category">カテゴリー</Link>
           <Link href="/tag">タグ</Link>
         </div>
