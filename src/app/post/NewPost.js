@@ -11,7 +11,14 @@ import TableHeader from '@tiptap/extension-table-header';
 import Highlight from '@tiptap/extension-highlight';
 import TextAlign from '@tiptap/extension-text-align';
 import Placeholder from '@tiptap/extension-placeholder';
-import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
+import { 
+  collection, 
+  addDoc, 
+  getDocs, 
+  query, 
+  where, 
+  serverTimestamp 
+} from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import db, { storage } from "../firebase";
 import { getAuth } from 'firebase/auth';
@@ -463,37 +470,55 @@ const NewPost = ({ initialData = null, isEditing = false, postId = null, onSave 
 
   const onPublish = async () => {
     try {
-      if (!title) {
+      if (!title.trim()) {
         alert('タイトルを入力してください');
         return;
       }
 
+      setIsUploading(true);
+
+      const currentUser = auth.currentUser;
+      const now = new Date();
       const postData = {
-        title,
+        title: title.trim(),
         content: editor.getHTML(),
-        tags,
-        // 新規投稿の場合のみ以下のフィールドを追加
-        ...(!!isEditing ? {} : {
-          created_at: new Date().getTime(),
-          authorId: auth.currentUser?.uid || 'guest',
-          authorName: auth.currentUser?.displayName || 'ゲスト',
-          authorPhotoURL: auth.currentUser?.photoURL || '/images/default-avatar.png',
-        }),
+        tags: tags,
+        created_at: now.getTime(), // Unix timestamp
+        updated_at: now.getTime(),
+        date: now.toLocaleString('ja-JP'), // 日本語表示用
+        authorId: currentUser ? currentUser.uid : 'guest',
+        authorName: currentUser ? (currentUser.displayName || 'ユーザー') : 'ゲスト',
+        authorPhotoURL: currentUser ? (currentUser.photoURL || '/images/default-avatar.png') : '/images/default-avatar.png'
       };
 
-      if (isEditing && onSave) {
+      if (!isEditing) {
+        // 新規投稿の場合
+        try {
+          const docRef = await addDoc(demoCollection, postData);
+          console.log('投稿完了:', docRef.id);
+          alert('投稿が完了しました！');
+          
+          // フォームのリセット
+          editor.commands.setContent('');
+          setTitle('');
+          setTags([]);
+          setSuggestedTags([]);
+          
+        } catch (error) {
+          console.error("Firestore エラー:", error);
+          throw error; // エラーを上位に伝播
+        }
+      } else if (onSave) {
+        // 編集モードの場合
         await onSave(postData);
-      } else {
-        await addDoc(demoCollection, postData);
-        alert('投稿が完了しました！');
-        // フォームのリセット
-        editor.commands.setContent('');
-        setTitle('');
-        setTags([]);
+        alert('更新が完了しました！');
       }
+
     } catch (error) {
       console.error("投稿エラー:", error);
-      alert('投稿に失敗しました。もう一度お試しください。');
+      alert('投稿に失敗しました: ' + (error.message || 'エラーが発生しました'));
+    } finally {
+      setIsUploading(false);
     }
   };
 
