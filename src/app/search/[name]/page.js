@@ -2,12 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import db from '../../firebase';
+import { demoCollection } from '../firebase';
 import Link from 'next/link';
 import './page.css';
 import Searchbar from '@/app/components/Searchbar';
 import '../../post/Allposts.css'; // AllpostsのCSSを直接インポート
-import { demoCollection } from '../firebase';
 
 export default function SearchResults() {
     const [results, setResults] = useState([]);

@@ -2,10 +2,10 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import db from '../firebase';
+import { demoCollection } from '../firebase';
 import './Searchbar.css';
 import Link from 'next/link';
-import { demoCollection } from '../firebase';
+
 
 export default function Searchbar() {
   const router = useRouter();

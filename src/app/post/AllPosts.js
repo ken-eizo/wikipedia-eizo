@@ -3,7 +3,7 @@
 import "./Allposts.css";
 import { collection, onSnapshot } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
-import db from '../firebase'
+import { demoCollection } from '../firebase';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -16,7 +16,7 @@ const AllPosts = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        onSnapshot(collection(db, 'demo'), (snapshot) => {
+        onSnapshot(collection(demoCollection), (snapshot) => {
             setPosts(
                 snapshot.docs.map((doc) => ({
                     id: doc.id, // 🔹 FirebaseのドキュメントIDを追加
