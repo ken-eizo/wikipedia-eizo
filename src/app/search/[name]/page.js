@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import { demoCollection } from '../firebase';
+import { demoCollection } from '../../firebase';  // 2階層上のfirebase.jsを参照
 import Link from 'next/link';
 import './page.css';
 import Searchbar from '@/app/components/Searchbar';
