@@ -1,0 +1,57 @@
+.eizo-mov {
+    margin: 70px 100px;
+    font-family: 'Abril Fatface', cursive;
+    color: rgb(247, 215, 215);
+  }
+  
+  .welcome-eizo-mov {
+    font-size: 80px;
+    letter-spacing: 0.01em;
+    font-weight: 700;
+    text-align: center;
+  }
+  .titte{
+  }
+  .poetic-text{
+    font-size: 5px;
+    letter-spacing: 0.25em;
+    text-align: center;
+    margin-top: 25px;
+    color: rgb(164, 164, 164);
+  }
+  .link {
+    margin-top: 35px;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    line-height: 2.0em;
+  }
+  .link a {
+    text-decoration: none; /* デフォルトの下線を削除 */
+  }
+  .link a:hover {
+    text-decoration: underline; /* ホバー時に下線を表示 */
+    text-decoration-color: #494949;
+    color: #dadada;
+  }
+  .sharp{
+    
+    padding-top: 290px;
+  }
+  .sharp-hight {
+    display: flex; /* ブロック要素にする */
+    justify-content: center;
+    padding-bottom: 10px;
+  }
+  .sharp-1{/* 画像周囲に20pxの余白を追加 */
+    width: 128px; /* 画像の幅を30%に設定 */
+    height: 70px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .sharp-2{/* 画像周囲に20pxの余白を追加 */
+    width: 90px; /* 画像の幅を30%に設定 */
+    height: 50px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
