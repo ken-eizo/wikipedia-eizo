@@ -4,7 +4,9 @@
     min-height: 100vh;
     background: #181818;
     position: relative;
-    padding: 20px;
+}
+.editPage {
+  padding-top:  35px;
 }
 
 .editor-menubar {

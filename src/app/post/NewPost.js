@@ -523,6 +523,7 @@ const NewPost = ({ initialData = null, isEditing = false, postId = null, onSave 
   };
 
   return (
+    <div className='editPage'>
     <div className="editor-container">
       {/* タイトル入力欄 */}
       <div className="title-input">
@@ -667,6 +668,7 @@ const NewPost = ({ initialData = null, isEditing = false, postId = null, onSave 
         </span>
         {isEditing ? '保存する' : '公開する'}
       </button>
+    </div>
     </div>
   );
 };

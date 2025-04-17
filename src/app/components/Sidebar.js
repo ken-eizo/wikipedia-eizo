@@ -11,8 +11,8 @@ const Sidebar = () => {
       <div className="sidebar-content">
         <div className="sidebar-section">
           <Link href="/readme">readme</Link>
-          <Link href="/category">カテゴリー</Link>
-          <Link href="/tag">タグ</Link>
+          <Link href="/newrelease">今後追加予定</Link>
+          <Link href="https://team.eizo.mov/">team.eizo.mov</Link>
         </div>
       </div>
     </div>

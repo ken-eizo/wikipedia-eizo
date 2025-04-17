@@ -13,6 +13,8 @@ export default function PostDetail({ params }) {
   const [relatedPosts, setRelatedPosts] = useState([]);
   const id = use(params).id;
 
+  const [previewPos, setPreviewPos] = useState({ x: 0, y: 0 });
+
   // タグをクリックしたときの処理を修正
   const handleTagClick = (tag) => {
     // Searchbarと同じフォーマットで検索ページへ遷移
@@ -70,27 +72,67 @@ export default function PostDetail({ params }) {
 
   // HTMLコンテンツのリンクを修正する関数
   const processContent = (content) => {
-    // DOMパーサーを作成
     const parser = new DOMParser();
     const doc = parser.parseFromString(content, 'text/html');
 
-    // 記事へのリンクを修正
     doc.querySelectorAll('a[href^="/post/"]').forEach(link => {
-      // 元のhrefとtitleを保持
       const href = link.getAttribute('href');
-      const title = link.getAttribute('title');
+      const postId = href.split('/post/')[1];
       
-      // クラスを追加
       link.classList.add('article-link');
       
-      // クリック可能にするための属性を設定
-      link.setAttribute('href', href);
-      if (title) link.setAttribute('title', title);
-      link.setAttribute('target', '_self');
+      // デバッグ用のログを追加
+      console.log('リンクを検出:', href, postId);
+      
+      link.addEventListener('mouseenter', (e) => {
+        console.log('マウスエンター:', postId); // デバッグ用
+        const rect = e.target.getBoundingClientRect();
+        setPreviewPos({
+          x: rect.right + 10,
+          y: rect.top
+        });
+      });
+
+      link.addEventListener('mouseleave', () => {
+        console.log('マウスリーブ'); // デバッグ用
+      });
     });
 
     return doc.body.innerHTML;
   };
+
+  useEffect(() => {
+    if (post) {
+      const links = document.querySelectorAll('a[href^="/post/"]');
+      
+      const handleMouseEnter = (e) => {
+        const href = e.target.getAttribute('href');
+        const postId = href.split('/post/')[1];
+        const rect = e.target.getBoundingClientRect();
+        
+        setPreviewPos({
+          x: rect.right + 10,
+          y: rect.top
+        });
+      };
+
+      const handleMouseLeave = () => {
+      };
+
+      links.forEach(link => {
+        link.classList.add('article-link');
+        link.addEventListener('mouseenter', handleMouseEnter);
+        link.addEventListener('mouseleave', handleMouseLeave);
+      });
+
+      return () => {
+        links.forEach(link => {
+          link.removeEventListener('mouseenter', handleMouseEnter);
+          link.removeEventListener('mouseleave', handleMouseLeave);
+        });
+      };
+    }
+  }, [post]);
 
   if (!post) return <div>Loading...</div>;
 

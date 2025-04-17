@@ -6,6 +6,7 @@ export default function Readme() {
     return (
         <div className="readme">
             <p>wikipedia eizo.mov</p>
+            <p>https://github.com/ken-eizo/wikipedia-eizo</p>
             <h2>基本機能</h2>
             <h3>- 投稿</h3>
             <p>
